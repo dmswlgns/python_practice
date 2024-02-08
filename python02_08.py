@@ -8,18 +8,21 @@ import random
 
 answer=random.randint(1,100)
 chance=7
+count=1
 
 while chance!=0:
     guess_number=int(input("Input guess number:"))
     if guess_number==answer:
         print(f"You Win.Answer is {answer}")
-        print(f"you got it")
+        print(f"you got it.you use {count}chance")
         break
     elif guess_number>answer:
         chance=chance-1
+        count+=1
         print(f"guess number is lower. chance:{chance}")
     else:
         chance = chance - 1
+        count+=1
         print(f"guess number is higher. chance:{chance}")
 else:
     print(f"Game Over. answer is {answer}")
