@@ -1,3 +1,16 @@
+
+import time
+def timer(func):
+    def wrapper(*args,**kwargs):
+        start=time.time()
+        result=func(*args,**kwargs)
+        end = time.time()
+        print("쇼요시간:",end-start)
+        return result
+    return wrapper
+
+
+@timer
 def nCr(n,r) -> int :
     '''
     조합 함수
@@ -7,7 +20,6 @@ def nCr(n,r) -> int :
     '''
     numerator=factorial(n)
     denominator=factorial(n-r)*factorial(r)
-
     return int(numerator/denominator)
 
 def factorial(num) -> int :
@@ -20,6 +32,8 @@ def factorial(num) -> int :
     for i in range(1,num+1):
         result *=i
     return result
+
+
 
 # def factorial(num)->int:
 #     '''
