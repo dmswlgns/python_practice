@@ -1,28 +1,35 @@
-import mymath
-import random
-# if __name__=="__main__":
-#     n = int(input("Input n: "))
-#     r = int(input("Input r: "))
-#     print(f"{n}C{r} = {mymath.nCr(n,r)}")
-#
+def print_poly(f_x) -> str:
+    term = len(f_x) - 1
+    poly_expression = "f(x) = "
 
-answer=random.randint(1,100)
-chance=7
-count=1
+    for i in range(len(fx)):
+        coefficient = f_x[i]
 
-while chance!=0:
-    guess_number=int(input("Input guess number:"))
-    if guess_number==answer:
-        print(f"You Win.Answer is {answer}")
-        print(f"you got it.you use {count}chance")
-        break
-    elif guess_number>answer:
-        chance=chance-1
-        count+=1
-        print(f"guess number is lower. chance:{chance}")
-    else:
-        chance = chance - 1
-        count+=1
-        print(f"guess number is higher. chance:{chance}")
-else:
-    print(f"Game Over. answer is {answer}")
+        if coefficient==0:
+            term = term - 1
+            continue
+        if coefficient >= 0 and i!=0:
+            poly_expression = poly_expression + "+"
+        poly_expression = poly_expression + f'{coefficient}x^{term} '
+        term = term - 1
+
+    return poly_expression
+
+
+def calculation_poly(x_value, f_x) -> int:
+    return_value = 0
+    term = len(f_x) - 1
+
+    for i in range(len(fx)):
+        coefficient = f_x[i]
+        return_value += coefficient * pow(x_value, term)
+        term = term - 1
+
+    return return_value
+
+
+fx = [2, 3, 4, 0, -9]
+
+if __name__ == "__main__":
+    print(print_poly(fx))
+    print(calculation_poly(int(input("x 값 : ")), fx))
